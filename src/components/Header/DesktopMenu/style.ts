@@ -7,14 +7,20 @@ export const StyledDesktopNavMenu = styled.nav`
     flex-direction: row;
     gap: 3rem;
 
-    li {
+    li,
+    a {
       color: var(--grey-3);
       font-size: var(--font-size-16);
 
       cursor: pointer;
+
+      a {
+        text-decoration: none;
+      }
     }
 
-    li:hover {
+    li:hover,
+    a:hover {
       color: var(--grey-5);
     }
   }
