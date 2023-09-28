@@ -8,6 +8,10 @@ export const GlobalStyles = createGlobalStyle`
     list-style: none;
   }
 
+  html {
+  font-size: 16px;
+  } 
+
   button{
     cursor: pointer;
   }
@@ -22,7 +26,7 @@ export const GlobalStyles = createGlobalStyle`
   --grey-3:#696969;
   --grey-4:#5E5E5E;
   --grey-5:#464646;
-  --grey-6:#131313;
+  --grey-6:#252525;
 
   --font-size-10: 0.625rem;
   --font-size-12: 0.75rem;
@@ -58,6 +62,7 @@ export const GlobalStyles = createGlobalStyle`
 
   body{
     font-family: 'Inter', sans-serif;
+
   }
 
 `

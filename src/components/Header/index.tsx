@@ -14,24 +14,26 @@ export const Header = () => {
   }
   return (
     <StyledHeader>
-      <section className='header-branding'>
-        <img src={logo} alt='logo' />
-        <div className='user-info'>
-          <h4>Carol</h4>
-          <span>carol@gmail.com</span>
-        </div>
-      </section>
-      <button
-        onClick={toggleMenu}
-        className={isOpenMenu ? 'open-menu-button' : ' menu-button'}
-      >
-        <img
-          src={isOpenMenu ? angle_down : frame}
-          alt='navigation menu button'
-        />
-      </button>
-      <MobileMenu isOpenMenu={isOpenMenu} />
-      <DesktopMenu />
+      <div className='container'>
+        <section className='header-branding'>
+          <img src={logo} alt='logo' />
+          <div className='user-info'>
+            <h4 id='user-name'>Carol</h4>
+            <span id='user-email'>carol@gmail.com</span>
+          </div>
+        </section>
+        <button
+          onClick={toggleMenu}
+          className={isOpenMenu ? 'open-menu-button' : ' menu-button'}
+        >
+          <img
+            src={isOpenMenu ? angle_down : frame}
+            alt='navigation menu button'
+          />
+        </button>
+        <MobileMenu isOpenMenu={isOpenMenu} />
+        <DesktopMenu />
+      </div>
     </StyledHeader>
   )
 }
