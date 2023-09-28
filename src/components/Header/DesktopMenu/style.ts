@@ -2,7 +2,9 @@ import styled from 'styled-components'
 
 export const StyledDesktopNavMenu = styled.nav`
   display: none;
+
   .nav-menu {
+    position: relative;
     display: flex;
     flex-direction: row;
     gap: 3rem;
