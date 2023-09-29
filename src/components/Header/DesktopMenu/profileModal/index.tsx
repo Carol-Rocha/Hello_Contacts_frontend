@@ -3,16 +3,16 @@ import exit from '../../../../assets/icons/exit.svg'
 import cross from '../../../../assets/icons/cross.svg'
 import { StyledProfileModal } from './style'
 
-interface IProfileModal {
-  toggleModal: () => void
+interface IMyProfileModal {
+  toggleProfileModal: () => void
 }
 
-export const ProfileModal = ({ toggleModal }: IProfileModal) => {
+export const ProfileModal = ({ toggleProfileModal }: IMyProfileModal) => {
   return (
     <StyledProfileModal>
       <div className='position-relative'>
         <img
-          onClick={toggleModal}
+          onClick={toggleProfileModal}
           id='icon-close'
           src={cross}
           alt='icon to close modal'
