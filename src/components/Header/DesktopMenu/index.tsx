@@ -2,11 +2,19 @@ import { useState } from 'react'
 import { StyledDesktopNavMenu } from './style'
 import { Link } from 'react-router-dom'
 import { ProfileModal } from './profileModal'
+import { Modal } from '../../Modal'
+import { ModalContainer } from '../../Modal/ModalContainer'
 
 export const DesktopMenu = () => {
-  const [isOpenModal, setIsOpenModal] = useState<boolean>(false)
+  const [isOpenProfileModal, setIsOpenProfileModal] = useState<boolean>(false)
 
-  const toggleModal = () => setIsOpenModal(!isOpenModal)
+  const toggleProfileModal = () => setIsOpenProfileModal(!isOpenProfileModal)
+
+  const [isOpenCreateContactModal, setIsOpenCreateContactModal] =
+    useState<boolean>(false)
+
+  const toggleCreateContactModal = () =>
+    setIsOpenCreateContactModal(!isOpenCreateContactModal)
 
   return (
     <StyledDesktopNavMenu>
@@ -14,10 +22,22 @@ export const DesktopMenu = () => {
         <li>
           <Link to={'/'}>Contacts</Link>
         </li>
-        <li>Create contact</li>
-        <li onClick={toggleModal}>My profile</li>
-        {isOpenModal ? <ProfileModal toggleModal={toggleModal} /> : null}
+        <li onClick={toggleCreateContactModal}>Create contact</li>
+        <li onClick={toggleProfileModal}>My profile</li>
+        {isOpenProfileModal ? (
+          <ProfileModal toggleProfileModal={toggleProfileModal} />
+        ) : null}
       </ul>
+      {isOpenCreateContactModal ? (
+        <Modal>
+          <ModalContainer
+            title='Create contact'
+            paragraph='Enter the new contact information and press the Create button to save the information'
+            submitButton='Create'
+            toggleCreateContactModal={toggleCreateContactModal}
+          />
+        </Modal>
+      ) : null}
     </StyledDesktopNavMenu>
   )
 }
