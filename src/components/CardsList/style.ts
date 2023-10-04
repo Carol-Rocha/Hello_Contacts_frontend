@@ -5,7 +5,6 @@ export const StyledCards = styled.ul`
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin-top: 200px;
 
   .card {
     display: flex;
@@ -15,6 +14,7 @@ export const StyledCards = styled.ul`
     padding: 3rem 1rem 1rem 1.5rem;
     width: 90%;
     max-width: 340px;
+    margin: 0 auto;
     gap: 1rem;
     margin-bottom: 2rem;
     background-color: var(--grey-0);
@@ -60,5 +60,24 @@ export const StyledCards = styled.ul`
   .card:hover {
     background-color: var(--color-white);
     box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Breakpoint para tablets maiores */
+  @media (min-width: 600px) {
+    /* regras de estilo aqui */
+  }
+
+  /* Breakpoint para desktops pequenos */
+  @media (min-width: 800px) {
+    .card {
+      margin: 0;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  /* Breakpoint para desktops grandes */
+  @media (min-width: 1000px) {
+    /* regras de estilo aqui */
   }
 `
