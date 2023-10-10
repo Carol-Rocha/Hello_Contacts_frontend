@@ -24,9 +24,11 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
       const response = await api.post<ILoginResponse>('/login', data)
 
       const { token } = response.data
+      const { id } = response.data
 
       api.defaults.headers.common.Authorization = `Bearer ${token}`
       localStorage.setItem('hello-contacts:token', token)
+      localStorage.setItem('hello-contacts:id', id)
 
       navigate('dashboard')
     } catch (error) {
