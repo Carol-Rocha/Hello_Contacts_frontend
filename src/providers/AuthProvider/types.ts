@@ -7,6 +7,7 @@ export interface IAuthProviderProps {
 
 export interface ILoginResponse {
   token: string
+  id: string
 }
 
 export interface IAuthContextValues {
