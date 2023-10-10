@@ -13,8 +13,6 @@ export const CardsList = () => {
     getContacts().then(setContactsList)
   }, [])
 
-  console.log(contactsList)
-
   return (
     <StyledCardsList>
       {contactsList &&
