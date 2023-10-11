@@ -23,4 +23,11 @@ export const StyledInput = styled.div`
     font-family: 'Inter', sans-serif;
     color: var(--grey-2);
   }
+
+  #closed-password-icon {
+    height: 20px;
+    width: 20px;
+
+    cursor: pointer;
+  }
 `

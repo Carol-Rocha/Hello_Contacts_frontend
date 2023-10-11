@@ -30,7 +30,7 @@ export const FormContainer = ({
           <span id='submit-button'>{submitButton}</span>
         </div>
       </section>
-      <img src={loginImage} alt='illustration image' />
+      {/* <img id='illustration-image' src={loginImage} alt='illustration image' /> */}
     </StyledFormContainer>
   )
 }

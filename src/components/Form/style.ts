@@ -1,17 +1,19 @@
 import styled from 'styled-components'
 
-export const StyledFormContainer = styled.div`
+export const StyledFormContainer = styled.main`
   display: flex;
   flex-direction: column;
-  min-width: 300px;
+  justify-content: center;
+  align-items: center;
+  min-width: 500px;
+  height: 100vh;
 
   section {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 1rem 1.5rem;
+
+    width: 500px;
+    padding: 2rem 4rem 4rem 4rem;
 
     .form-information {
       display: flex;
@@ -32,15 +34,17 @@ export const StyledFormContainer = styled.div`
     .form-buttons {
       display: flex;
       flex-direction: row;
-      justify-content: space-around;
+      justify-content: center;
+      gap: 1.5rem;
 
       span {
         color: var(--grey-3);
+        font-size: var(--font-size-14);
       }
 
       #submit-button {
         color: var(--color-primary-1);
-        font-weight: bolder;
+        font-weight: bold;
       }
     }
   }
@@ -50,7 +54,7 @@ export const StyledFormContainer = styled.div`
     flex-direction: column;
     gap: 1rem;
 
-    padding: 3rem 2rem 2rem 2rem;
+    padding: 3rem 2rem;
 
     .nav-buttons {
       display: flex;
@@ -59,7 +63,7 @@ export const StyledFormContainer = styled.div`
       padding-top: 1rem;
 
       button {
-        padding: 1rem 1.5rem;
+        padding: 0.8rem;
 
         min-width: 40%;
         border: none;
@@ -86,7 +90,7 @@ export const StyledFormContainer = styled.div`
     }
   }
 
-  img {
+  #illustration-image {
     display: none;
   }
 
@@ -94,20 +98,20 @@ export const StyledFormContainer = styled.div`
   @media (min-width: 600px) {
     /* regras de estilo aqui */
     section {
+      background-color: var(--grey-0);
       box-shadow: 0px 4px 30px rgba(0, 4, 30, 0.25);
       border-radius: var(--border-radius-8);
-
-      padding: 2rem 4rem;
     }
   }
 
   /* Breakpoint para desktops pequenos */
   @media (min-width: 800px) {
     flex-direction: row;
-    justify-content: center;
 
-    /* img {
+    /* #illustration-image {
       display: flex;
+      width: 200px;
+      height: 200px;
     } */
   }
 
