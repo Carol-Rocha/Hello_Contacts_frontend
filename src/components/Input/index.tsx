@@ -6,7 +6,11 @@ export const Input = ({ type, placeholder, register }: TInput) => {
   return (
     <StyledInput>
       <input type={type} placeholder={placeholder} {...register} />
-      {type === 'password' ? <img src={closed_password} alt='icon' /> : ''}
+      {type === 'password' ? (
+        <img id='closed-password-icon' src={closed_password} alt='icon' />
+      ) : (
+        ''
+      )}
     </StyledInput>
   )
 }
