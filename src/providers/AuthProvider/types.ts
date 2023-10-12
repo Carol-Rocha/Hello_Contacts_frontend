@@ -11,5 +11,5 @@ export interface ILoginResponse {
 }
 
 export interface IAuthContextValues {
-  signIn: (data: TLoginData) => void
+  logIn: (data: TLoginData) => void
 }
