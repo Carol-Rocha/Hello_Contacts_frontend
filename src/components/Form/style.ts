@@ -13,13 +13,13 @@ export const StyledFormContainer = styled.main`
     flex-direction: column;
 
     width: 500px;
-    padding: 2rem 4rem 4rem 4rem;
+    padding: 3rem 4rem 4rem 4rem;
 
     .form-information {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.5rem;
+      gap: 1rem;
 
       h1 {
         color: var(--grey-6);
@@ -28,6 +28,7 @@ export const StyledFormContainer = styled.main`
 
       p {
         color: var(--grey-3);
+        font-size: var(--font-size-14);
       }
     }
 
@@ -52,8 +53,6 @@ export const StyledFormContainer = styled.main`
   form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-
     padding: 3rem 2rem;
 
     .nav-buttons {
@@ -87,6 +86,12 @@ export const StyledFormContainer = styled.main`
         color: var(--grey-0);
         font-weight: bold;
       }
+    }
+
+    .error-message {
+      font-size: var(--font-size-10);
+      color: #ce4646;
+      padding: 0.4rem 0 0 0.2rem;
     }
   }
 
