@@ -3,6 +3,7 @@ import { IAuthContextValues, IAuthProviderProps, ILoginResponse } from './types'
 import { useNavigate } from 'react-router-dom'
 import { TLoginData } from '../../pages/LoginPage/validator'
 import { api } from '../../services/api'
+import { toast } from 'react-toastify'
 
 export const AuthContext = createContext({} as IAuthContextValues)
 
@@ -19,7 +20,7 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
     api.defaults.headers.common.Authorization = `Bearer ${token}`
   }, [])
 
-  const signIn = async (data: TLoginData) => {
+  const logIn = async (data: TLoginData) => {
     try {
       const response = await api.post<ILoginResponse>('/login', data)
 
@@ -32,10 +33,10 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
 
       navigate('dashboard')
     } catch (error) {
-      console.log(error)
+      toast.warning('Invalid email and/or password!')
     }
   }
   return (
-    <AuthContext.Provider value={{ signIn }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ logIn }}>{children}</AuthContext.Provider>
   )
 }

@@ -5,11 +5,14 @@ export const StyledInput = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding: 1rem;
+  margin-top: 1rem;
 
   background-color: var(--grey-1);
   border-radius: var(--border-radius-5);
 
   input {
+    color: var(--grey-3);
+
     border: none;
     background-color: var(--grey-1);
     width: 100%;
@@ -22,6 +25,7 @@ export const StyledInput = styled.div`
   input::placeholder {
     font-family: 'Inter', sans-serif;
     color: var(--grey-2);
+    font-size: var(--font-size-12);
   }
 
   #closed-password-icon {
