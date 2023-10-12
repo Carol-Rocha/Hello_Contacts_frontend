@@ -1,5 +1,6 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import cross from '../../../assets/icons/cross.svg'
+import { Input } from '../../Input'
 
 type TFormValues = {
   fullName: string
@@ -41,17 +42,22 @@ export const ModalContainer = ({
           <p id='modal-parag'>{paragraph}</p>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <input
+          <Input
             type='text'
             placeholder='Full name'
-            {...register('fullName')}
+            register={register('fullName')}
           />
-          <input type='email' placeholder='Email' {...register('email')} />
-          <input
+          <Input
+            type='email'
+            placeholder='Email'
+            register={register('email')}
+          />
+          <Input
             type='tel'
-            placeholder='Telephone'
-            {...register('telephone')}
+            placeholder='(00) 00000-0000'
+            register={register('telephone')}
           />
+
           <div className='button-box'>
             <button>Cancel</button>
             <button type='submit' id='button-submit'>

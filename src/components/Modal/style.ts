@@ -66,25 +66,6 @@ export const StyledModalBackground = styled.div`
       }
 
       form {
-        gap: 1rem;
-
-        input {
-          padding: 1rem;
-          background-color: var(--grey-1);
-          border: none;
-          border-radius: var(--border-radius-8);
-          color: var(--grey-5);
-        }
-
-        input:focus {
-          outline: 2px solid var(--color-primary-1);
-        }
-
-        input::placeholder {
-          font-family: 'Inter', sans-serif;
-          color: var(--grey-2);
-        }
-
         .button-box {
           display: flex;
           flex-direction: row;
