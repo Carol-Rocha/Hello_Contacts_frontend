@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import { TRegisterData } from '../../pages/RegisterPage/validator'
 
 export interface IUser {
   id: string
@@ -12,6 +13,7 @@ export interface IUser {
 
 export interface IUserProvider {
   getUser: (id: string) => Promise<IUser>
+  sigIn: (formData: TRegisterData) => Promise<void>
 }
 
 export interface IUserProviderProps {
