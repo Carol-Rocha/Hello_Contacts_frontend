@@ -48,7 +48,7 @@ export const MobileMenu = ({ isOpenMenu }: IMenuToggle) => {
             title='Create contact'
             paragraph='Enter the new contact information and press the Create button to save the information'
             submitButton='Create'
-            toggleCreateContactModal={toggleCreateContactModal}
+            toggleModal={toggleCreateContactModal}
           />
         </Modal>
       ) : null}
