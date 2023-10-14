@@ -10,7 +10,11 @@ export const StyledModalBackground = styled.div`
   align-items: center;
 
   width: 100vw;
-  height: 100vh;
+  min-width: 344px;
+
+  height: 100%;
+
+  z-index: 1;
 
   > .main-modal {
     /* padding: 1rem 1.5rem; */

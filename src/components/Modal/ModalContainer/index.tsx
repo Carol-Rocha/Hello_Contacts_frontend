@@ -1,27 +1,15 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import cross from '../../../assets/icons/cross.svg'
 import { Input } from '../../Input'
-
-type TFormValues = {
-  fullName: string
-  email: string
-  telephone: string
-}
-
-interface IModalContainer {
-  title: string
-  paragraph: string
-  submitButton: string
-  toggleCreateContactModal?: () => void
-  toggleUpdateContactModal?: () => void
-}
+import { TModalContainer, TFormValues } from './types'
+import { StyledModalContainer } from './style'
 
 export const ModalContainer = ({
   title,
   paragraph,
   submitButton,
-  toggleCreateContactModal
-}: IModalContainer) => {
+  toggleModal
+}: TModalContainer) => {
   const { register, handleSubmit } = useForm<TFormValues>()
 
   const onSubmit: SubmitHandler<TFormValues> = async (formData) => {
@@ -29,10 +17,10 @@ export const ModalContainer = ({
   }
 
   return (
-    <div className='main-modal'>
+    <StyledModalContainer>
       <div className='container-position-relative'>
         <img
-          onClick={toggleCreateContactModal}
+          onClick={toggleModal}
           id='icon-close'
           src={cross}
           alt='icon to close modal'
@@ -66,6 +54,6 @@ export const ModalContainer = ({
           </div>
         </form>
       </div>
-    </div>
+    </StyledModalContainer>
   )
 }
