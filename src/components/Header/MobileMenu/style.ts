@@ -15,7 +15,8 @@ export const StyledMobileNavMenu = styled.nav`
     animation-duration: 2s;
     animation-timing-function: ease;
 
-    li {
+    li,
+    a {
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -34,7 +35,12 @@ export const StyledMobileNavMenu = styled.nav`
       }
     }
 
-    li:hover {
+    a {
+      text-decoration: none;
+    }
+
+    li:hover,
+    a:hover {
       font-weight: bold;
     }
   }
