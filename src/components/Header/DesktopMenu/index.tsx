@@ -20,7 +20,7 @@ export const DesktopMenu = () => {
     <StyledDesktopNavMenu>
       <ul className='nav-menu'>
         <li>
-          <Link to={'/'}>Contacts</Link>
+          <Link to={'/dashboard'}>Contacts</Link>
         </li>
         <li onClick={toggleCreateContactModal}>Create contact</li>
         <li onClick={toggleProfileModal}>My profile</li>
