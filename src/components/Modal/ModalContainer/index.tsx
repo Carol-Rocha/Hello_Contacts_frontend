@@ -1,21 +1,16 @@
-import { SubmitHandler, useForm } from 'react-hook-form'
 import cross from '../../../assets/icons/cross.svg'
 import { Input } from '../../Input'
-import { TModalContainer, TFormValues } from './types'
+import { TModalContainer } from './types'
 import { StyledModalContainer } from './style'
 
 export const ModalContainer = ({
   title,
   paragraph,
   submitButton,
-  toggleModal
+  toggleModal,
+  handleSubmit,
+  register
 }: TModalContainer) => {
-  const { register, handleSubmit } = useForm<TFormValues>()
-
-  const onSubmit: SubmitHandler<TFormValues> = async (formData) => {
-    console.log(formData)
-  }
-
   return (
     <StyledModalContainer>
       <div className='container-position-relative'>
@@ -29,11 +24,11 @@ export const ModalContainer = ({
           <h4 id='modal-title'>{title}</h4>
           <p id='modal-parag'>{paragraph}</p>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit}>
           <Input
             type='text'
             placeholder='Full name'
-            register={register('fullName')}
+            register={register('full_name')}
           />
           <Input
             type='email'

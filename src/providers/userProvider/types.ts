@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { TRegisterData } from '../../pages/RegisterPage/validator'
 
-export interface IUser {
+export type IUser = {
   id: string
   full_name: string
   email: string

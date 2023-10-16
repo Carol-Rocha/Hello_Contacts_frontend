@@ -1,10 +1,5 @@
-import { CardsList } from '../../components/CardsList'
-import { PagesTemplate } from '../../components/PagesTemplate'
+import { LoginPage } from '../LoginPage'
 
 export const HomePage = () => {
-  return (
-    <PagesTemplate>
-      <CardsList />
-    </PagesTemplate>
-  )
+  return <LoginPage />
 }
