@@ -4,8 +4,15 @@ import { Link } from 'react-router-dom'
 import { ProfileModal } from './profileModal'
 import { Modal } from '../../Modal'
 import { ModalContainer } from '../../Modal/ModalContainer'
+import { useContactsContext } from '../../../hooks/useContacts'
+import { TFormValues } from '../../Modal/ModalContainer/types'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { createContactSchema } from '../../Modal/ModalContainer/validators'
+import { useForm } from 'react-hook-form'
 
 export const DesktopMenu = () => {
+  const { createContact } = useContactsContext()
+
   const [isOpenProfileModal, setIsOpenProfileModal] = useState<boolean>(false)
 
   const toggleProfileModal = () => setIsOpenProfileModal(!isOpenProfileModal)
@@ -15,6 +22,10 @@ export const DesktopMenu = () => {
 
   const toggleCreateContactModal = () =>
     setIsOpenCreateContactModal(!isOpenCreateContactModal)
+
+  const { register, handleSubmit } = useForm<TFormValues>({
+    resolver: zodResolver(createContactSchema)
+  })
 
   return (
     <StyledDesktopNavMenu>
@@ -35,6 +46,8 @@ export const DesktopMenu = () => {
             paragraph='Enter the new contact information and press the Create button to save the information'
             submitButton='Create'
             toggleModal={toggleCreateContactModal}
+            handleSubmit={handleSubmit(createContact)}
+            register={register}
           />
         </Modal>
       ) : null}
