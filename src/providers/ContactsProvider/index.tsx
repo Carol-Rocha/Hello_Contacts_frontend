@@ -1,5 +1,9 @@
 import { createContext } from 'react'
-import { IContactProviderProps, IContactsProvider } from './types'
+import {
+  IContactProviderProps,
+  IContactsProvider,
+  TUpdateContact
+} from './types'
 import { api } from '../../services/api'
 import { TCreateContact } from '../../components/Modal/ModalContainer/validators'
 import { toast } from 'react-toastify'
@@ -38,7 +42,23 @@ export const ContactsProvider = ({ children }: IContactProviderProps) => {
     }
   }
 
-  const value = { getContacts, createContact }
+  const updateContact = async (contactData: TUpdateContact, id: string) => {
+    const token = localStorage.getItem('hello-contacts:token')
+    console.log('conte:', contactData)
+    try {
+      const response = await api.patch(`/contacts/${id}`, contactData, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      toast.success('Updated successfully!')
+      return response.data
+    } catch (error) {
+      toast.warning('Oops! Something went wrong')
+    }
+  }
+
+  const value = { getContacts, createContact, updateContact }
 
   return (
     <contactsContext.Provider value={value}>

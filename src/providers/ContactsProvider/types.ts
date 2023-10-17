@@ -19,10 +19,16 @@ export type TContactRequest = {
 export type TContactResponse = IContact & {
   client: IUser
 }
+export type TUpdateContact = {
+  full_name?: string
+  email?: string
+  telephone?: string
+}
 
 export interface IContactsProvider {
   getContacts: () => Promise<IContact[]>
   createContact: (contactData: TContactRequest) => Promise<TContactResponse>
+  updateContact: (contactData: TUpdateContact, id: string) => Promise<IContact>
 }
 
 export interface IContactProviderProps {
