@@ -8,11 +8,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Modal } from '../../Modal'
 import { ModalContainer } from '../../Modal/ModalContainer'
 import { logOut, profilePage } from '../../../utils/navigation'
-import { useContactsContext } from '../../../hooks/useContacts'
-import { TFormValues } from '../../Modal/ModalContainer/types'
-import { createContactSchema } from '../../Modal/ModalContainer/validators'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
+
+import { ModalAddContact } from '../../Modal/ModalAddContact'
 
 interface IMenuToggle {
   isOpenMenu: boolean
@@ -21,17 +18,11 @@ interface IMenuToggle {
 export const MobileMenu = ({ isOpenMenu }: IMenuToggle) => {
   const navigate = useNavigate()
 
-  const { createContact } = useContactsContext()
-
   const [isOpenCreateContactModal, setIsOpenCreateContactModal] =
     useState<boolean>(false)
 
   const toggleCreateContactModal = () =>
     setIsOpenCreateContactModal(!isOpenCreateContactModal)
-
-  const { register, handleSubmit } = useForm<TFormValues>({
-    resolver: zodResolver(createContactSchema)
-  })
 
   return (
     <StyledMobileNavMenu>
@@ -58,11 +49,10 @@ export const MobileMenu = ({ isOpenMenu }: IMenuToggle) => {
           <ModalContainer
             title='Create contact'
             paragraph='Enter the new contact information and press the Create button to save the information'
-            submitButton='Create'
             toggleModal={toggleCreateContactModal}
-            handleSubmit={handleSubmit(createContact)}
-            register={register}
-          />
+          >
+            <ModalAddContact />
+          </ModalContainer>
         </Modal>
       ) : null}
     </StyledMobileNavMenu>
