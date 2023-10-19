@@ -1,16 +1,16 @@
-// import { UseFormHandleSubmit } from 'react-hook-form'
+import {
+  TContactRequest,
+  // TContactResponse,
+  TUpdateContactRequest
+} from '../../../providers/ContactsProvider/types'
+import { ReactNode } from 'react'
 
-import { UseFormRegister } from 'react-hook-form'
-import { TContactResponse } from '../../../providers/ContactsProvider/types'
-import { FormEventHandler } from 'react'
-
-export type TFormValues = TContactResponse
+export type TCreateFormValues = TContactRequest
+export type TUpdateFormValues = TUpdateContactRequest
 
 export type TModalContainer = {
-  title: string
+  title?: string
   paragraph: string
-  handleSubmit: FormEventHandler<HTMLFormElement> | undefined
-  submitButton: string
-  register: UseFormRegister<TContactResponse>
+  children: ReactNode
   toggleModal: () => void
 }
