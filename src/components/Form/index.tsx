@@ -1,5 +1,4 @@
 import { ReactNode } from 'react'
-import loginImage from '../../assets/images/Frame.svg'
 import { StyledFormContainer } from './style'
 
 type TFormContainer = {
@@ -30,7 +29,6 @@ export const FormContainer = ({
           <span id='submit-button'>{submitButton}</span>
         </div>
       </section>
-      {/* <img id='illustration-image' src={loginImage} alt='illustration image' /> */}
     </StyledFormContainer>
   )
 }
