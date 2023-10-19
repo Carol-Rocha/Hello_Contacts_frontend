@@ -25,6 +25,12 @@ export type TUpdateContact = {
   telephone?: string
 }
 
+export type TUpdateContactRequest = {
+  full_name?: string
+  email?: string
+  telephone?: string
+}
+
 export interface IContactsProvider {
   getContacts: () => Promise<IContact[]>
   createContact: (contactData: TContactRequest) => Promise<TContactResponse>
