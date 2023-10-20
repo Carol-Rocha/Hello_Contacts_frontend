@@ -12,7 +12,11 @@ interface IContactCardProps {
 export const ModalAddContact = ({ toggleModal }: IContactCardProps) => {
   const { createContact } = useContactsContext()
 
-  const { register, handleSubmit } = useForm<TCreateContact>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<TCreateContact>({
     resolver: zodResolver(createContactSchema)
   })
 
@@ -27,12 +31,21 @@ export const ModalAddContact = ({ toggleModal }: IContactCardProps) => {
         placeholder='Full name'
         register={register('full_name')}
       />
+      {errors.full_name ? (
+        <p className='error-message'>{errors.full_name.message}</p>
+      ) : null}
       <Input type='email' placeholder='Email' register={register('email')} />
+      {errors.email ? (
+        <p className='error-message'>{errors.email.message}</p>
+      ) : null}
       <Input
         type='tel'
         placeholder='(00) 00000-0000'
         register={register('telephone')}
       />
+      {errors.telephone ? (
+        <p className='error-message'>{errors.telephone.message}</p>
+      ) : null}
 
       <StyledButtonContainer>
         <button onClick={toggleModal}>Cancel</button>
