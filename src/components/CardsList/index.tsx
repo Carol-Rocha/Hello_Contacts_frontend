@@ -8,6 +8,7 @@ export const CardsList = () => {
   const { getContacts } = useContactsContext()
 
   const [contactsList, setContactsList] = useState<IContact[]>([])
+  // const [reloadList, setReloadList] = useState<boolean>(false)
 
   useEffect(() => {
     getContacts().then(setContactsList)
