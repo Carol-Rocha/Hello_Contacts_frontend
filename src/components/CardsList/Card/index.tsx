@@ -9,6 +9,7 @@ import { Modal } from '../../Modal'
 import { ModalContainer } from '../../Modal/ModalContainer'
 
 import { ModalEditContact } from '../../Modal/ModalEditContact'
+import { ModalDeleteContact } from '../../Modal/ModalDeleteContact'
 
 interface IContactCardProps {
   contact: IContact
@@ -18,8 +19,14 @@ export const Card = ({ contact }: IContactCardProps) => {
   const [isOpenEditContactModal, setIsOpenEditContactModal] =
     useState<boolean>(false)
 
+  const [isOpenDeleteContactModal, setIsOpenDeleteContactModal] =
+    useState<boolean>(false)
+
   const toggleEditContactModal = () =>
     setIsOpenEditContactModal(!isOpenEditContactModal)
+
+  const toggleDeleteContactModal = () =>
+    setIsOpenDeleteContactModal(!isOpenDeleteContactModal)
 
   return (
     <StyledCard className='card'>
@@ -41,7 +48,7 @@ export const Card = ({ contact }: IContactCardProps) => {
         <img src={telephone} alt='phone icon' />
         <span>{contact.telephone}</span>
       </div>
-      <button>Delete</button>
+      <button onClick={toggleDeleteContactModal}>Delete</button>
       {isOpenEditContactModal ? (
         <Modal>
           <ModalContainer
@@ -49,7 +56,23 @@ export const Card = ({ contact }: IContactCardProps) => {
             paragraph='Edit the contact information and press the Save button to save the changes'
             toggleModal={toggleEditContactModal}
           >
-            <ModalEditContact contact={contact} />
+            <ModalEditContact
+              contact={contact}
+              toggleModal={toggleEditContactModal}
+            />
+          </ModalContainer>
+        </Modal>
+      ) : null}
+      {isOpenDeleteContactModal ? (
+        <Modal>
+          <ModalContainer
+            paragraph='Are you sure you want to delete this contact?'
+            toggleModal={toggleDeleteContactModal}
+          >
+            <ModalDeleteContact
+              contact={contact}
+              toggleModal={toggleDeleteContactModal}
+            />
           </ModalContainer>
         </Modal>
       ) : null}
