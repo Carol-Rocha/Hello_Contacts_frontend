@@ -10,7 +10,7 @@ interface IContactCardProps {
 }
 
 export const ModalAddContact = ({ toggleModal }: IContactCardProps) => {
-  const { createContact } = useContactsContext()
+  const { createContact, setReloadList } = useContactsContext()
 
   const {
     register,
@@ -22,9 +22,11 @@ export const ModalAddContact = ({ toggleModal }: IContactCardProps) => {
 
   return (
     <form
-      onSubmit={handleSubmit((formData) =>
-        createContact(formData).then(toggleModal)
-      )}
+      onSubmit={handleSubmit(async (formData) => {
+        await createContact(formData)
+        setReloadList((prevState) => !prevState)
+        toggleModal()
+      })}
     >
       <Input
         type='text'

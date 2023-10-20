@@ -26,6 +26,8 @@ export type TUpdateContact = {
 }
 
 export interface IContactsProvider {
+  reloadList: boolean
+  setReloadList: React.Dispatch<React.SetStateAction<boolean>>
   getContacts: () => Promise<IContact[]>
   createContact: (contactData: TContactRequest) => Promise<TContactResponse>
   updateContact: (contactData: TUpdateContact, id: string) => Promise<IContact>

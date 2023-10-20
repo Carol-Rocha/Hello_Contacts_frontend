@@ -10,10 +10,11 @@ export const ModalDeleteContact = ({
   contact,
   toggleModal
 }: IContactCardProps) => {
-  const { deleteContact } = useContactsContext()
+  const { deleteContact, setReloadList } = useContactsContext()
 
-  const handleContactDeletion = () => {
-    deleteContact(contact.id)
+  const handleContactDeletion = async () => {
+    await deleteContact(contact.id)
+    setReloadList((prevState) => !prevState)
     toggleModal()
   }
 

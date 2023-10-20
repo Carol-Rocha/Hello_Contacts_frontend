@@ -15,7 +15,7 @@ export const ModalEditContact = ({
   contact,
   toggleModal
 }: IContactCardProps) => {
-  const { updateContact } = useContactsContext()
+  const { updateContact, setReloadList } = useContactsContext()
 
   const {
     register,
@@ -27,9 +27,11 @@ export const ModalEditContact = ({
 
   return (
     <form
-      onSubmit={handleSubmit((formData) =>
-        updateContact(formData, contact.id).then(toggleModal)
-      )}
+      onSubmit={handleSubmit(async (formData) => {
+        await updateContact(formData, contact.id)
+        setReloadList((prevState) => !prevState)
+        toggleModal()
+      })}
     >
       <Input
         type='text'
@@ -38,7 +40,6 @@ export const ModalEditContact = ({
           value: contact.full_name
         })}
       />
-
       {errors.full_name ? (
         <p className='error-message'>{errors.full_name.message}</p>
       ) : null}

@@ -1,4 +1,4 @@
-import { createContext } from 'react'
+import { createContext, useState } from 'react'
 import {
   IContactProviderProps,
   IContactsProvider,
@@ -11,6 +11,8 @@ import { toast } from 'react-toastify'
 export const contactsContext = createContext({} as IContactsProvider)
 
 export const ContactsProvider = ({ children }: IContactProviderProps) => {
+  const [reloadList, setReloadList] = useState<boolean>(false)
+
   const createContact = async (contactData: TContactRequest) => {
     const token = localStorage.getItem('hello-contacts:token')
     try {
@@ -67,7 +69,14 @@ export const ContactsProvider = ({ children }: IContactProviderProps) => {
     }
   }
 
-  const value = { getContacts, createContact, updateContact, deleteContact }
+  const value = {
+    getContacts,
+    createContact,
+    updateContact,
+    deleteContact,
+    reloadList,
+    setReloadList
+  }
 
   return (
     <contactsContext.Provider value={value}>
