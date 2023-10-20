@@ -20,15 +20,9 @@ export type TContactResponse = IContact & {
   client: IUser
 }
 export type TUpdateContact = {
-  full_name?: string
-  email?: string
-  telephone?: string
-}
-
-export type TUpdateContactRequest = {
-  full_name?: string
-  email?: string
-  telephone?: string
+  full_name?: string | null
+  email?: string | null
+  telephone?: string | null
 }
 
 export interface IContactsProvider {
