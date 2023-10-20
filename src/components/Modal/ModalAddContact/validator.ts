@@ -6,7 +6,4 @@ export const createContactSchema = z.object({
   telephone: z.string().nonempty('Telephone is required')
 })
 
-export const updateContactSchema = createContactSchema.partial()
-
 export type TCreateContact = z.infer<typeof createContactSchema>
-export type TUpdateContact = z.infer<typeof updateContactSchema>
