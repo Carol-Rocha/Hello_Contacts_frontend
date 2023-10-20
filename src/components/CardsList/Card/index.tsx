@@ -8,6 +8,8 @@ import { useState } from 'react'
 import { Modal } from '../../Modal'
 import { ModalContainer } from '../../Modal/ModalContainer'
 
+import { ModalEditContact } from '../../Modal/ModalEditContact'
+
 interface IContactCardProps {
   contact: IContact
 }
@@ -45,9 +47,10 @@ export const Card = ({ contact }: IContactCardProps) => {
           <ModalContainer
             title='Update contact'
             paragraph='Edit the contact information and press the Save button to save the changes'
-            submitButton='Save'
             toggleModal={toggleEditContactModal}
-          />
+          >
+            <ModalEditContact contact={contact} />
+          </ModalContainer>
         </Modal>
       ) : null}
     </StyledCard>
