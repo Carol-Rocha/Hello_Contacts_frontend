@@ -3,15 +3,25 @@ import { useContactsContext } from '../../../hooks/useContacts'
 import { Input } from '../../Input'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { TCreateContact, createContactSchema } from './validator'
+import { StyledButtonContainer } from '../../../styles/components/buttonContainer'
 
-export const ModalAddContact = () => {
+interface IContactCardProps {
+  toggleModal: () => void
+}
+
+export const ModalAddContact = ({ toggleModal }: IContactCardProps) => {
   const { createContact } = useContactsContext()
 
   const { register, handleSubmit } = useForm<TCreateContact>({
     resolver: zodResolver(createContactSchema)
   })
+
   return (
-    <form onSubmit={handleSubmit(createContact)}>
+    <form
+      onSubmit={handleSubmit((formData) =>
+        createContact(formData).then(toggleModal)
+      )}
+    >
       <Input
         type='text'
         placeholder='Full name'
@@ -24,12 +34,12 @@ export const ModalAddContact = () => {
         register={register('telephone')}
       />
 
-      <div className='button-box'>
-        <button>Cancel</button>
+      <StyledButtonContainer>
+        <button onClick={toggleModal}>Cancel</button>
         <button type='submit' id='button-submit'>
           Create
         </button>
-      </div>
+      </StyledButtonContainer>
     </form>
   )
 }

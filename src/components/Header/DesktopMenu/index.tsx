@@ -37,7 +37,7 @@ export const DesktopMenu = () => {
             paragraph='Enter the new contact information and press the Create button to save the information'
             toggleModal={toggleCreateContactModal}
           >
-            <ModalAddContact />
+            <ModalAddContact toggleModal={toggleCreateContactModal} />
           </ModalContainer>
         </Modal>
       ) : null}

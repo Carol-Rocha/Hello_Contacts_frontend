@@ -4,12 +4,17 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Input } from '../../Input'
 import { IContact } from '../../../providers/ContactsProvider/types'
 import { TUpdateContact, updateContactSchema } from './validator'
+import { StyledButtonContainer } from '../../../styles/components/buttonContainer'
 
 interface IContactCardProps {
   contact: IContact
+  toggleModal: () => void
 }
 
-export const ModalEditContact = ({ contact }: IContactCardProps) => {
+export const ModalEditContact = ({
+  contact,
+  toggleModal
+}: IContactCardProps) => {
   const { updateContact } = useContactsContext()
 
   const {
@@ -22,7 +27,9 @@ export const ModalEditContact = ({ contact }: IContactCardProps) => {
 
   return (
     <form
-      onSubmit={handleSubmit((formData) => updateContact(formData, contact.id))}
+      onSubmit={handleSubmit((formData) =>
+        updateContact(formData, contact.id).then(toggleModal)
+      )}
     >
       <Input
         type='text'
@@ -54,12 +61,12 @@ export const ModalEditContact = ({ contact }: IContactCardProps) => {
         <p className='error-message'>{errors.telephone.message}</p>
       ) : null}
 
-      <div className='button-box'>
+      <StyledButtonContainer>
         <button>Cancel</button>
         <button type='submit' id='button-submit'>
           Save
         </button>
-      </div>
+      </StyledButtonContainer>
     </form>
   )
 }
