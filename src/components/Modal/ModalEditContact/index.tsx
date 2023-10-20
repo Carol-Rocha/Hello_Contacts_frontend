@@ -62,7 +62,7 @@ export const ModalEditContact = ({
       ) : null}
 
       <StyledButtonContainer>
-        <button>Cancel</button>
+        <button onClick={toggleModal}>Cancel</button>
         <button type='submit' id='button-submit'>
           Save
         </button>
