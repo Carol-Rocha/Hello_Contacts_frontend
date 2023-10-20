@@ -5,14 +5,13 @@ import { IContact } from '../../providers/ContactsProvider/types'
 import { Card } from './Card'
 
 export const CardsList = () => {
-  const { getContacts } = useContactsContext()
+  const { getContacts, reloadList } = useContactsContext()
 
   const [contactsList, setContactsList] = useState<IContact[]>([])
-  // const [reloadList, setReloadList] = useState<boolean>(false)
 
   useEffect(() => {
     getContacts().then(setContactsList)
-  }, [])
+  }, [reloadList])
 
   return (
     <StyledCardsList>
