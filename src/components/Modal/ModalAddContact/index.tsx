@@ -1,14 +1,13 @@
 import { useForm } from 'react-hook-form'
 import { useContactsContext } from '../../../hooks/useContacts'
 import { Input } from '../../Input'
-import { TCreateFormValues } from '../ModalContainer/types'
-import { createContactSchema } from '../ModalContainer/validators'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { TCreateContact, createContactSchema } from './validator'
 
 export const ModalAddContact = () => {
   const { createContact } = useContactsContext()
 
-  const { register, handleSubmit } = useForm<TCreateFormValues>({
+  const { register, handleSubmit } = useForm<TCreateContact>({
     resolver: zodResolver(createContactSchema)
   })
   return (
