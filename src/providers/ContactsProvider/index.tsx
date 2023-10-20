@@ -44,7 +44,6 @@ export const ContactsProvider = ({ children }: IContactProviderProps) => {
 
   const updateContact = async (contactData: TUpdateContact, id: string) => {
     const token = localStorage.getItem('hello-contacts:token')
-    console.log('conte:', contactData)
     try {
       const response = await api.patch(`/contacts/${id}`, contactData, {
         headers: {
@@ -53,12 +52,22 @@ export const ContactsProvider = ({ children }: IContactProviderProps) => {
       })
       toast.success('Updated successfully!')
       return response.data
-    } catch (error) {
+    } catch {
       toast.warning('Oops! Something went wrong')
     }
   }
 
-  const value = { getContacts, createContact, updateContact }
+  const deleteContact = async (id: string) => {
+    try {
+      await api.delete(`/contacts/${id}`)
+      toast.success('Contact deleted successfully')
+      return
+    } catch {
+      toast.warning('Oops! Something went wrong')
+    }
+  }
+
+  const value = { getContacts, createContact, updateContact, deleteContact }
 
   return (
     <contactsContext.Provider value={value}>

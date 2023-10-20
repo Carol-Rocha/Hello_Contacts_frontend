@@ -29,6 +29,7 @@ export interface IContactsProvider {
   getContacts: () => Promise<IContact[]>
   createContact: (contactData: TContactRequest) => Promise<TContactResponse>
   updateContact: (contactData: TUpdateContact, id: string) => Promise<IContact>
+  deleteContact: (id: string) => Promise<void>
 }
 
 export interface IContactProviderProps {
