@@ -28,6 +28,12 @@ export const StyledModalContainer = styled.div`
     form {
       display: flex;
       flex-direction: column;
+
+      p {
+        color: #ce4646;
+        font-size: var(--font-size-12);
+        padding-top: 0.2rem;
+      }
     }
 
     .info-modal {
