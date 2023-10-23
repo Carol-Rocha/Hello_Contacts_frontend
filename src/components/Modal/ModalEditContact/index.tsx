@@ -5,6 +5,7 @@ import { Input } from '../../Input'
 import { IContact } from '../../../providers/ContactsProvider/types'
 import { TUpdateContact, updateContactSchema } from './validator'
 import { StyledButtonContainer } from '../../../styles/components/buttonContainer'
+import { formatPhoneNumber } from '../../../utils/format'
 
 interface IContactCardProps {
   contact: IContact
@@ -55,7 +56,12 @@ export const ModalEditContact = ({
         type='tel'
         placeholder={contact.telephone}
         register={register('telephone', {
-          value: contact.telephone
+          value: contact.telephone,
+          valueAsNumber: false, // Impede a conversão automática em número
+          onChange: (e) => {
+            const input = e.target
+            formatPhoneNumber(input)
+          }
         })}
       />
       {errors.telephone ? (
