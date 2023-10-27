@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import { IUser, IUserProvider, IUserProviderProps } from './types'
+import { IUser, IUserProvider, IUserProviderProps, TUpdateUser } from './types'
 import { api } from '../../services/api'
 import { TRegisterData } from '../../pages/RegisterPage/validator'
 import { useNavigate } from 'react-router-dom'
@@ -36,7 +36,22 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     }
   }
 
-  const value = { getUser, sigIn }
+  const updateUser = async (userData: TUpdateUser, id: string) => {
+    const token = localStorage.getItem('hello-contacts:token')
+    try {
+      const response = await api.patch(`/clients/${id}`, userData, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      toast.success('Updated successfully!')
+      return response.data
+    } catch {
+      toast.warning('Oops! Something went wrong')
+    }
+  }
+
+  const value = { getUser, sigIn, updateUser }
 
   return <userContext.Provider value={value}>{children}</userContext.Provider>
 }
