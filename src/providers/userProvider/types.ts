@@ -11,9 +11,16 @@ export type IUser = {
   deletedAt: string | null
 }
 
+export type TUpdateUser = {
+  full_name?: string | null
+  email?: string | null
+  telephone?: string | null
+}
+
 export interface IUserProvider {
   getUser: (id: string) => Promise<IUser>
   sigIn: (formData: TRegisterData) => Promise<void>
+  updateUser: (formData: TUpdateUser, id: string) => Promise<IUser>
 }
 
 export interface IUserProviderProps {
