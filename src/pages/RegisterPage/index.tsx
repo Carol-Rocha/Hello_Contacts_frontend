@@ -4,6 +4,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { FormContainer } from '../../components/Form'
 import { Input } from '../../components/Input'
 import { useUserContext } from '../../hooks/useUser'
+import { handleGoBack } from '../../utils/navigation'
+import { useNavigate } from 'react-router-dom'
 
 export const RegisterPage = () => {
   const {
@@ -15,6 +17,8 @@ export const RegisterPage = () => {
   })
 
   const { sigIn } = useUserContext()
+
+  const navigate = useNavigate()
 
   return (
     <FormContainer
@@ -55,13 +59,8 @@ export const RegisterPage = () => {
           <p className='error-message'>{errors.password.message}</p>
         ) : null}
 
-        {/* <Input
-          type='password'
-          placeholder='Confirm password'
-          register={register('confirm_password')}
-        /> */}
         <div className='nav-buttons'>
-          <button>Return</button>
+          <button onClick={() => handleGoBack(navigate)}>Return</button>
           <button id='button-submit' type='submit'>
             Register
           </button>

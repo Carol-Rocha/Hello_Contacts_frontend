@@ -1,5 +1,5 @@
 import { LoginPage } from '../LoginPage'
 
 export const HomePage = () => {
-  return <LoginPage />
+  return <div>Home</div>
 }

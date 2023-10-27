@@ -41,6 +41,8 @@ export const StyledFormContainer = styled.main`
       span {
         color: var(--grey-3);
         font-size: var(--font-size-14);
+
+        cursor: pointer;
       }
 
       #submit-button {

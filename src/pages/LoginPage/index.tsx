@@ -4,6 +4,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useAuth } from '../../hooks/useAuth'
 import { Input } from '../../components/Input'
 import { FormContainer } from '../../components/Form'
+import { handleGoBack } from '../../utils/navigation'
+import { useNavigate } from 'react-router-dom'
 
 export const LoginPage = () => {
   const {
@@ -15,6 +17,7 @@ export const LoginPage = () => {
   })
 
   const { logIn } = useAuth()
+  const navigate = useNavigate()
 
   return (
     <FormContainer
@@ -37,7 +40,7 @@ export const LoginPage = () => {
           <p className='error-message'>{errors.password.message}</p>
         ) : null}
         <div className='nav-buttons'>
-          <button>Return</button>
+          <button onClick={() => handleGoBack(navigate)}>Return</button>
           <button id='button-submit' type='submit'>
             Login
           </button>
