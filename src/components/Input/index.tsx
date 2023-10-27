@@ -1,6 +1,6 @@
 import { TInput } from './types'
 import closed_password from '../../assets/icons/closed_password.svg'
-import { StyledInput } from './style'
+import { StyledInput } from '../../styles/components/InputContainer'
 
 export const Input = ({ type, placeholder, register }: TInput) => {
   return (
