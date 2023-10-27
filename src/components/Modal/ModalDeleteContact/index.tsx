@@ -20,7 +20,9 @@ export const ModalDeleteContact = ({
 
   return (
     <StyledButtonContainer>
-      <button onClick={toggleModal}>Cancel</button>
+      <button id='button-return' onClick={toggleModal}>
+        Cancel
+      </button>
       <button onClick={handleContactDeletion} type='submit' id='button-submit'>
         Delete
       </button>
