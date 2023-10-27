@@ -57,7 +57,7 @@ export const ModalEditContact = ({
         placeholder={contact.telephone}
         register={register('telephone', {
           value: contact.telephone,
-          valueAsNumber: false, // Impede a conversão automática em número
+          valueAsNumber: false,
           onChange: (e) => {
             const input = e.target
             formatPhoneNumber(input)
@@ -69,7 +69,9 @@ export const ModalEditContact = ({
       ) : null}
 
       <StyledButtonContainer>
-        <button onClick={toggleModal}>Cancel</button>
+        <button id='button-return' onClick={toggleModal}>
+          Cancel
+        </button>
 
         <button type='submit' id='button-submit'>
           Save
