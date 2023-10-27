@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 import { StyledFormContainer } from './style'
+import { handleButtonClick } from '../../utils/navigation'
 
 type TFormContainer = {
   title: string
@@ -26,7 +27,9 @@ export const FormContainer = ({
         {children}
         <div className='form-buttons'>
           <span>{registration_question}</span>
-          <span id='submit-button'>{submitButton}</span>
+          <span onClick={handleButtonClick} id='submit-button'>
+            {submitButton}
+          </span>
         </div>
       </section>
     </StyledFormContainer>

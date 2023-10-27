@@ -10,3 +10,20 @@ export const profilePage = (navigate: NavigateFunction) => {
   const userId: string | null = localStorage.getItem('hello-contacts:id')
   navigate(`/clients/${userId}`)
 }
+
+export const handleGoBack = (navigate: NavigateFunction) => {
+  navigate('/')
+}
+
+export const handleButtonClick = (
+  event: React.MouseEvent<HTMLButtonElement>
+) => {
+  const buttonName = event.currentTarget.textContent
+  console.log(buttonName)
+
+  if (buttonName === 'Login') {
+    window.location.href = '/login'
+  } else if (buttonName === 'Sign Up') {
+    window.location.href = '/register'
+  }
+}
