@@ -11,11 +11,13 @@ export const StyledButtonContainer = styled.div`
     padding: 1rem 1.5rem;
     border: none;
     border-radius: var(--border-radius-8);
-
-    background-color: var(--grey-1);
-    color: var(--grey-3);
     font-size: var(--font-size-16);
     font-weight: bold;
+  }
+
+  #button-return {
+    background-color: var(--grey-1);
+    color: var(--grey-3);
   }
 
   #button-submit {

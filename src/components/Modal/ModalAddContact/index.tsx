@@ -52,7 +52,9 @@ export const ModalAddContact = ({ toggleModal }: IContactCardProps) => {
         <p className='error-message'>{errors.telephone.message}</p>
       ) : null}
       <StyledButtonContainer>
-        <button onClick={toggleModal}>Cancel</button>
+        <button id='button-return' onClick={toggleModal}>
+          Cancel
+        </button>
         <button type='submit' id='button-submit'>
           Create
         </button>
