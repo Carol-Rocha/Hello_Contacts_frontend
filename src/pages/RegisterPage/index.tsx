@@ -6,6 +6,7 @@ import { Input } from '../../components/Input'
 import { useUserContext } from '../../hooks/useUser'
 import { handleGoBack } from '../../utils/navigation'
 import { useNavigate } from 'react-router-dom'
+import { formatPhoneNumber } from '../../utils/format'
 
 export const RegisterPage = () => {
   const {
@@ -44,7 +45,13 @@ export const RegisterPage = () => {
         <Input
           type='tel'
           placeholder='(00) 00000-0000'
-          register={register('telephone')}
+          register={register('telephone', {
+            valueAsNumber: false, // Impede a conversão automática em número
+            onChange: (e) => {
+              const input = e.target
+              formatPhoneNumber(input)
+            }
+          })}
         />
         {errors.telephone ? (
           <p className='error-message'>{errors.telephone.message}</p>
