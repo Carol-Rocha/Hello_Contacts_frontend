@@ -5,6 +5,9 @@ export const StyledForm = styled.form`
   flex-direction: column;
   padding: 3rem 2rem;
 
+  width: 50%;
+  min-width: 500px;
+
   .error-message {
     font-size: var(--font-size-10);
     color: #ce4646;

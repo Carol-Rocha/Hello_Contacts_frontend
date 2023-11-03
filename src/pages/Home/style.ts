@@ -7,6 +7,7 @@ export const StyledHomePage = styled.main`
 
   height: 100vh;
   width: 100vw;
+  min-width: 500px;
 
   .hide-container {
     display: none;
@@ -16,6 +17,8 @@ export const StyledHomePage = styled.main`
     width: 50%;
     background-color: var(--color-primary-1);
     align-items: center;
+    justify-content: center;
+
     img {
       width: 700px;
       height: 500px;
@@ -28,11 +31,13 @@ export const StyledHomePage = styled.main`
     justify-content: center;
     align-items: center;
     width: 50%;
+    min-width: 500px;
 
     .form-info {
       display: flex;
       flex-direction: column;
       text-align: center;
+      gap: 1.2rem;
 
       h4 {
         color: var(--grey-6);
