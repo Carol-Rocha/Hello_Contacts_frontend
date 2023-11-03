@@ -10,10 +10,15 @@ export const StyledAskButton = styled.div`
 
   span {
     font-size: var(--font-size-12);
+    cursor: pointer;
   }
 
   .ask-button {
     color: var(--grey-3);
+  }
+
+  .ask-button:hover {
+    text-decoration: underline;
   }
 
   .link-button {
