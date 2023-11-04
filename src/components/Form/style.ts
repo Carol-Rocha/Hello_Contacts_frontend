@@ -114,12 +114,6 @@ export const StyledFormContainer = styled.main`
   /* Breakpoint para desktops pequenos */
   @media (min-width: 800px) {
     flex-direction: row;
-
-    /* #illustration-image {
-      display: flex;
-      width: 200px;
-      height: 200px;
-    } */
   }
 
   /* Breakpoint para desktops grandes */
