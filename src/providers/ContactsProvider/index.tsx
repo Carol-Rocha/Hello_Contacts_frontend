@@ -23,8 +23,8 @@ export const ContactsProvider = ({ children }: IContactProviderProps) => {
       })
       toast.success('Contact created successfully!')
       return response.data
-    } catch (error) {
-      toast.warning('Oops! Something went wrong')
+    } catch (error: any) {
+      toast.warning(error.response.data.message)
     }
   }
 
