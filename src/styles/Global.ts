@@ -60,7 +60,12 @@ export const GlobalStyles = createGlobalStyle`
   --border-radius-50: 50px;
 }
 
-  body{
+  body, option, input{
+    font-family: 'Inter', sans-serif;
+    
+  }
+  
+  input::placeholder {
     font-family: 'Inter', sans-serif;
 
   }

@@ -26,9 +26,21 @@ export type TUpdateContact = {
 }
 
 export interface IContactsProvider {
+  contacts: IContact[]
+  setContacts: React.Dispatch<React.SetStateAction<IContact[]>>
+  filter: string
+  setFilter: React.Dispatch<React.SetStateAction<string>>
   reloadList: boolean
   setReloadList: React.Dispatch<React.SetStateAction<boolean>>
-  getContacts: () => Promise<IContact[]>
+  searchTerm: string | undefined
+  setSearchTerm: React.Dispatch<React.SetStateAction<string | undefined>>
+  currentPage: number
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>
+  getContacts: (
+    searchTerm: string | undefined,
+    page: number | 1,
+    filter: string
+  ) => Promise<IContact[]>
   createContact: (contactData: TContactRequest) => Promise<TContactResponse>
   updateContact: (contactData: TUpdateContact, id: string) => Promise<IContact>
   deleteContact: (id: string) => Promise<void>
