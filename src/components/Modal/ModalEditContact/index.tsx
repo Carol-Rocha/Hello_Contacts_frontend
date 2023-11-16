@@ -23,7 +23,12 @@ export const ModalEditContact = ({
     handleSubmit,
     formState: { errors }
   } = useForm<TUpdateContact>({
-    resolver: zodResolver(updateContactSchema)
+    resolver: zodResolver(updateContactSchema),
+    defaultValues: {
+      full_name: contact.full_name,
+      email: contact.email,
+      telephone: contact.telephone
+    }
   })
 
   return (
@@ -37,9 +42,7 @@ export const ModalEditContact = ({
       <Input
         type='text'
         placeholder={contact.full_name}
-        register={register('full_name', {
-          value: contact.full_name
-        })}
+        register={register('full_name')}
       />
       {errors.full_name ? (
         <p className='error-message'>{errors.full_name.message}</p>
@@ -47,7 +50,7 @@ export const ModalEditContact = ({
       <Input
         type='email'
         placeholder={contact.email}
-        register={register('email', { value: contact.email })}
+        register={register('email')}
       />
       {errors.email ? (
         <p className='error-message'>{errors.email.message}</p>
@@ -56,7 +59,6 @@ export const ModalEditContact = ({
         type='tel'
         placeholder={contact.telephone}
         register={register('telephone', {
-          value: contact.telephone,
           valueAsNumber: false,
           onChange: (e) => {
             const input = e.target
