@@ -3,8 +3,6 @@ import { PagesTemplate } from '../../components/PagesTemplate'
 import { TUpdateUser, updateUserSchema } from './validator'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useUserContext } from '../../hooks/useUser'
-import { useEffect, useState } from 'react'
-import { IUser } from '../../providers/userProvider/types'
 import { formatPhoneNumber } from '../../utils/format'
 import { StyledProfileComponent } from './style'
 import { ProfilePageInput } from '../components/ProfilePageInput'
@@ -13,17 +11,7 @@ import emailIcon from '../../assets/icons/email.svg'
 import telIcon from '../../assets/icons/telephone.svg'
 
 export const ProfilePage = () => {
-  const { updateUser, getUser } = useUserContext()
-
-  const [user, setUser] = useState<IUser>()
-
-  const userId = localStorage.getItem('hello-contacts:id')
-
-  useEffect(() => {
-    if (userId) {
-      getUser(userId).then(setUser)
-    }
-  }, [])
+  const { updateUser, user } = useUserContext()
 
   const {
     register,
@@ -62,7 +50,9 @@ export const ProfilePage = () => {
                 icon={emailIcon}
                 alt='Icon profile'
                 placeholder={user.email}
-                register={register('email', { value: user.email })}
+                register={register('email', {
+                  value: user.email
+                })}
               />
               {errors.email ? (
                 <p className='error-message'>{errors.email.message}</p>

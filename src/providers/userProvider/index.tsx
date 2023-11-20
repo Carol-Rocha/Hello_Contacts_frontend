@@ -1,4 +1,4 @@
-import { createContext } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { IUser, IUserProvider, IUserProviderProps, TUpdateUser } from './types'
 import { api } from '../../services/api'
 import { TRegisterData } from '../../pages/RegisterPage/validator'
@@ -9,6 +9,16 @@ export const userContext = createContext({} as IUserProvider)
 
 export const UserProvider = ({ children }: IUserProviderProps) => {
   const navigate = useNavigate()
+
+  const [user, setUser] = useState<IUser>()
+
+  const userId = localStorage.getItem('hello-contacts:id')
+
+  useEffect(() => {
+    if (userId) {
+      getUser(userId).then(setUser)
+    }
+  }, [])
 
   const sigIn = async (formData: TRegisterData) => {
     try {
@@ -30,6 +40,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
         }
       })
 
+      setUser(response.data)
       return response.data
     } catch (error) {
       return error
@@ -51,7 +62,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     }
   }
 
-  const value = { getUser, sigIn, updateUser }
+  const value = { getUser, sigIn, updateUser, user, setUser }
 
   return <userContext.Provider value={value}>{children}</userContext.Provider>
 }
