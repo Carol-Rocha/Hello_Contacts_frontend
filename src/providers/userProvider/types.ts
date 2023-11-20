@@ -18,6 +18,8 @@ export type TUpdateUser = {
 }
 
 export interface IUserProvider {
+  user: IUser | undefined
+  setUser: React.Dispatch<React.SetStateAction<IUser | undefined>>
   getUser: (id: string) => Promise<IUser>
   sigIn: (formData: TRegisterData) => Promise<void>
   updateUser: (formData: TUpdateUser, id: string) => Promise<IUser>
